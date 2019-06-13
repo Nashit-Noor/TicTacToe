@@ -7,17 +7,51 @@ public static int[][] ticbox;
 	public static int win(int [][]tic) {
 		//check all rows
 		//loop through rows from 0 to 3 and check if all the 3 places have same marks
- 		
+		boolean flag = true;
+		int i,j,num;
+ 		for(i=0;i<3;i++) {
+ 			num = tic[i][0];
+ 			for(j=0;j<3;j++) {
+ 				if(tic[i][j]!=num)
+ 					flag=false;
+ 			}
+ 			if(flag)
+ 				return tic[i][j-1];
+ 		}
 		
 		//check all cols
 		//loop through columns from 0 to 3 and check if all the 3 places have same marks
  		
+ 		for(i=0;i<3;i++) {
+ 			num = tic[i][0];
+ 			for(j=0;j<3;j++) {
+ 				if(tic[j][i]!=num)
+ 					flag=false;
+ 			}
+ 			if(flag)
+ 				return tic[j-1][i];
+ 		}
 		//check both diagonals 
-		
-		
+		for(i=0;i<3;i++) {
+			num = tic[0][0];
+			for(j=i;j<=i;j++) {
+				if(tic[i][j]!=num)
+					flag=false;
+			}
+			if(flag)
+				return tic[i-1][j-1];
+		}
+		for(i=2;i>=0;i--) {
+			num = tic[2][2];
+			for(j=i;j>=i;j--) {
+				if(tic[i][j]!=num)
+					flag=false;
+			}
+			if(flag)
+				return tic[i][j];
+		}
 		
 		//write your code here !!!
-		
 		
 		
 		return 0;
@@ -40,7 +74,8 @@ public static int[][] ticbox;
 		
 		
 		//Write your code here !!!
-		
+		if(a1>=0 && a1<3 && a2>=0 && a2<3 && tic[a1][a2]==0)
+			return true;
 		
 		return false;
 	}
